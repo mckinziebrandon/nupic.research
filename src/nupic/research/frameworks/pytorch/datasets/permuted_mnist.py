@@ -91,6 +91,8 @@ class PermutedMNIST(MNIST):
         return index // len(self.data)
 
 
+
+
 class ContextDependentPermutedMNIST(PermutedMNIST):
     """
     A variant of permutedMNIST where each permutation (i.e., 'task') is associated with

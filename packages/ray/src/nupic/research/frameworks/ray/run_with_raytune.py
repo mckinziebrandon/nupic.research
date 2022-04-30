@@ -76,7 +76,7 @@ def run_single_instance(config):
     # Get number of GPUs
     config.setdefault("num_gpus", torch.cuda.device_count())
     config.setdefault("workers", 4)
-    config.setdefault("log_level", "INFO")
+    config.setdefault("log_level", "DEBUG")
     config.setdefault("reuse_actors", False)
     config.setdefault("dist_port", get_free_port())
 

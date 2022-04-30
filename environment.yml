@@ -19,9 +19,7 @@ dependencies:
   - pip:
       # Install nupic.torch libraries in develop mode.
       # Assume libraries were cloned into ${HOME}/nta folder
-      - -e ${HOME}/nta/nupic.torch
+      - -e ../nupic.torch
 
       # Install nupic.research and its dependencies 
       - -r requirements.txt
-
-
