@@ -22,9 +22,13 @@
 import math
 from collections.abc import Iterable
 
+from typing import Dict, List, Any, Union
 import numpy as np
 import torch
 from torch.utils.data import DistributedSampler, Sampler
+
+# Allow for targets to have any type, although they typically have type `int`.
+Target = Any
 
 __all__ = [
     "TaskDistributedSampler",
@@ -85,12 +89,12 @@ class TaskRandomSampler(Sampler):
         indices (sequence): a sequence of indices
     """
 
-    def __init__(self, task_indices):
+    def __init__(self, task_indices: Dict[Target, List[int]]):
         self.task_indices = task_indices
         self.num_classes = len(task_indices)
         self.set_active_tasks(0)
 
-    def set_active_tasks(self, tasks):
+    def set_active_tasks(self, tasks: Union[int, List[int]]):
         self.active_tasks = tasks
         if not isinstance(self.active_tasks, Iterable):
             self.active_tasks = [tasks]
